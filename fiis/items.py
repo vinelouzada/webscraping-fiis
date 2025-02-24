@@ -15,3 +15,4 @@ class InfoMoneyItem(scrapy.Item):
     fii = scrapy.Field()
     price = scrapy.Field()
     currency = scrapy.Field()
+    created_at = scrapy.Field()

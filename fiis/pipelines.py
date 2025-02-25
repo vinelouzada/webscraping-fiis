@@ -10,7 +10,7 @@ from itemadapter import ItemAdapter
 
 class FiisPipeline:
     def open_spider(self, spider):
-        self.file = open("fiis.jsonl", "w")
+        self.file = open("fiis.jsonl", "a")
 
     def close_spider(self, spider):
         self.file.close()

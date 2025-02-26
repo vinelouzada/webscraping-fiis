@@ -16,6 +16,23 @@ class FiisPipeline:
         self.file.close()
 
     def process_item(self, item, spider):
+        if spider.name != "InfoMoney":
+            return item
         line = json.dumps(ItemAdapter(item).asdict(), ensure_ascii=False) + "\n"
         self.file.write(line)
         return item
+
+class NewsPipeline:
+    def open_spider(self, spider):
+        self.file = open("news.jsonl", "a")
+
+    def close_spider(self, spider):
+        self.file.close()
+
+    def process_item(self, item, spider):
+        if spider.name != "FIIsNoticias":
+            return item
+
+        line = json.dumps(ItemAdapter(item).asdict(), ensure_ascii=False) + "\n"
+        self.file.write(line)
+        return line

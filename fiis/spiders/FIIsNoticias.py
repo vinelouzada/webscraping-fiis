@@ -17,10 +17,10 @@ class FiisnoticiasSpider(scrapy.Spider):
 
     def parse_article(self, response):
         title_selector = response.css(".newsContent__article > h1::text")
-        body_selector = response.css(".newsContent__article p::text")
+        body_selector = response.css(".newsContent__article p *::text, .newsContent__article h2 *::text, .newsContent__article table *::text")
 
         title = "".join(title_selector.extract()).strip()
-        body = "".join(body_selector.extract()).strip()
+        body = " ".join(body_selector.extract()).strip()
         created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         yield FIIsNoticiasItem(title=title, body=body, created_at=created_at)

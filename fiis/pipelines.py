@@ -4,6 +4,8 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import json
 import pymongo
+import logging
+logging.getLogger("pymongo").setLevel(logging.WARNING)
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter

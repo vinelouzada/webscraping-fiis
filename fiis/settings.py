@@ -7,6 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 BOT_NAME = "fiis"
 
 SPIDER_MODULES = ["fiis.spiders"]
@@ -63,8 +67,9 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "fiis.pipelines.FiisPipeline": 300,
-   "fiis.pipelines.NewsPipeline": 300
+   "fiis.pipelines.FiisPipeline": 100,
+   "fiis.pipelines.NewsPipeline": 200,
+   "fiis.pipelines.MongoPipeline": 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -91,3 +96,7 @@ ITEM_PIPELINES = {
 # Set settings whose default value is deprecated to a future-proof value
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+# Database connection
+MONGO_URI=os.getenv("MONGO_URI")
+MONGO_DATABASE=os.getenv("MONGO_DATABASE")

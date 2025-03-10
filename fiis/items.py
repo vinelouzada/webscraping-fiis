@@ -17,7 +17,7 @@ class InfoMoneyItem(scrapy.Item):
     currency = scrapy.Field()
     created_at = scrapy.Field()
 
-class FIIsNoticias(scrapy.Item):
+class FIIsNoticiasItem(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
     created_at = scrapy.Field()

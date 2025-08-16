@@ -20,4 +20,7 @@ class InfoMoneyItem(scrapy.Item):
 class FIIsNoticiasItem(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
+    published_at = scrapy.Field()
+    url = scrapy.Field()
+    source = scrapy.Field()
     created_at = scrapy.Field()

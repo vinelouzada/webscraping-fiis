@@ -34,7 +34,7 @@ class NewsPipeline:
         self.file.close()
 
     def process_item(self, item, spider):
-        if spider.name != "FIIsNoticias":
+        if spider.name == "InfoMoney":
             return item
 
         line = json.dumps(ItemAdapter(item).asdict(), ensure_ascii=False) + "\n"
@@ -45,6 +45,7 @@ class NewsPipeline:
 class MongoPipeline:
     COLLECTION_MAP = {
         "FIIsNoticias": "news",
+        "MoneyTimes": "news",
         "InfoMoney": "quotes"
     }
 

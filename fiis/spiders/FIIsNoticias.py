@@ -1,7 +1,7 @@
 import scrapy
 
 from datetime import datetime
-from fiis.items import FIIsNoticiasItem
+from fiis.items import NewsItem
 
 
 class FiisnoticiasSpider(scrapy.Spider):
@@ -27,4 +27,4 @@ class FiisnoticiasSpider(scrapy.Spider):
         source = self.name
         created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        yield FIIsNoticiasItem(title=title, body=body, published_at=published_at, url=url, source=source, created_at=created_at)
+        yield NewsItem(title=title, body=body, published_at=published_at, url=url, source=source, created_at=created_at)

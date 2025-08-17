@@ -13,3 +13,8 @@ to test:
 ```
 scrapy shell <url>
 ```
+
+to run script:
+```
+sudo chmod +x news_crawler.sh
+```

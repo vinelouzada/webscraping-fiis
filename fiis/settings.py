@@ -67,7 +67,6 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "fiis.pipelines.FiisPipeline": 100,
    "fiis.pipelines.NewsPipeline": 200,
    "fiis.pipelines.MongoPipeline": 300
 }

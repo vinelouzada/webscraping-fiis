@@ -10,22 +10,6 @@ logging.getLogger("pymongo").setLevel(logging.WARNING)
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
-
-class FiisPipeline:
-    def open_spider(self, spider):
-        self.file = open("fiis.jsonl", "a")
-
-    def close_spider(self, spider):
-        self.file.close()
-
-    def process_item(self, item, spider):
-        if spider.name != "InfoMoney":
-            return item
-        line = json.dumps(ItemAdapter(item).asdict(), ensure_ascii=False) + "\n"
-        self.file.write(line)
-        return item
-
-
 class NewsPipeline:
     def open_spider(self, spider):
         self.file = open("news.jsonl", "a")
@@ -34,9 +18,6 @@ class NewsPipeline:
         self.file.close()
 
     def process_item(self, item, spider):
-        if spider.name == "InfoMoney":
-            return item
-
         line = json.dumps(ItemAdapter(item).asdict(), ensure_ascii=False) + "\n"
         self.file.write(line)
         return item
@@ -46,7 +27,8 @@ class MongoPipeline:
     COLLECTION_MAP = {
         "FIIsNoticias": "news",
         "MoneyTimes": "news",
-        "InfoMoney": "quotes"
+        "InfoMoney": "news",
+        "CNNBrasil": "news"
     }
 
     def __init__(self, mongo_uri, mongo_db):
